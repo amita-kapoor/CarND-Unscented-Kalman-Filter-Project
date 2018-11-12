@@ -68,7 +68,7 @@ for instructions and the project rubric.
 
 As per the rubric the accepted values of rmse is [0.9, 0.10, .40, .30] when run against the given dataset. My result:
 
-![image](final.png)
+![image](result.png)
 
 ## Editor Settings
 

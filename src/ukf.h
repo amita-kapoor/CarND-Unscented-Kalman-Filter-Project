@@ -68,6 +68,19 @@ public:
   double lambda_;
 
 
+  ///* the current NIS for radar
+  double NIS_radar_;
+
+  ///* the current NIS for laser
+  double NIS_laser_;
+  
+  ///* Radar measurement noise covariance matrix
+  MatrixXd R_radar_;
+  
+  ///* Lidar measurement noise covariance matrix
+  MatrixXd R_lidar_;
+
+
   /**
    * Constructor
    */
@@ -77,6 +90,11 @@ public:
    * Destructor
    */
   virtual ~UKF();
+
+  /**
+  *  Angle normalization to [-Pi, Pi]
+  ***********************************/
+  void NormalizedAngle(double *angle);
 
   /**
    * ProcessMeasurement
@@ -102,6 +120,10 @@ public:
    * @param meas_package The measurement at k+1
    */
   void UpdateRadar(MeasurementPackage meas_package);
+
+
+  // Universal update function
+  void UpdateAll(MeasurementPackage meas_package, MatrixXd Zsig, int n_z);
 };
 
 #endif /* UKF_H */
